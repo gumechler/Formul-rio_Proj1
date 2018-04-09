@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Formulário</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="shortcut icon" href="form.ico" type="image/x-icon"/>
+<script  type="text/javascript">
+	function validar() {
+	var nome = form1.nome.value;
+	var email = form1.email.value;
+	var senha = form1.senha.value;
+	var rep_senha = form1.rep_senha.value;
+		if (nome == "") {
+			window.alert('Preencha o campo com seu nome');
+			form1.nome.focus();
+			return false;
+		}
+		if (nome.length < 5) {
+			window.alert('Digite seu nome completo');
+			form1.nome.focus();
+			return false;
+		}
+		if (senha != rep_senha) {
+			window.alert('Senhas diferentes');
+			form1.senha.focus();
+			return false;
+		}
+		if (email.length > 20) {
+			window.alert('Digite seu email correto');
+			form1.email.focus();
+			return false;
+		}
+		if (senha.length < 6 ) {
+			window.alert('Senha muito pequena');
+			form1.senha.focus();
+			return false;
+		}
+		if (senha == 123456 ) {
+			window.alert('Senha não Permitida !');
+			form1.senha.focus();
+			return false;
+		}
+		if (!form1.genero1.checked && !form1.genero2.checked){
+
+			window.alert("Selecione o gênero, por favor!");
+			form1.genero1.focus();
+			return false;
+		}
+		if (!form1.genero1.checked && !form1.genero2.checked){
+			window.alert("Selecione o gênero, por favor!");
+			form1.genero1.focus();
+			return false;
+		}
+		if (form1.curso.value == ""){
+			window.alert("Escolha uma opção de curso");
+			form1.curso.focus();
+			return false;
+		}
+		if (form1.int1.checked == false && form1.int2.checked == false && form1.int3.checked == false ) {
+			alert("Favor escolher uma opção de interesse");
+			form1.int1.focus();
+			return false;
+		}
+		if (form1.int3.checked == true) {
+			form1.int1.checked = false;
+			form1.int2.checked = false;
+			form1.int1.disabled = true;
+			form1.int2.disabled = true;
+		}else{
+			form1.int1.disabled = false;
+			form1.int2.disabled = false;
+		}
+		var demo = new Date();
+		document.getElementById("demo").innerHTML = demo;
+
+		window.alert('Olá ' + nome + ', seus dados foram cadastrados com sucesso no sistema - Data de envio das informações: ' + demo);
+
+	return true ;
+		}
+
+</script>
+
+
+</head>
+<body>
+<form name="form1" action="#" method="post" id="box">
+	Nome Completo:
+	<input name="nome" type="text" required maxlength="30"><br /><br />
+	Email( Até 20 carecteres ):
+	<input name="email" type="text" required><br /><br />
+	Senha( 6 Caracteres ):
+	<input name="senha" type="password" required><br /><br />
+	Repetir Senha:
+	<input name="rep_senha" type="password" required><br /><br />
+
+	Genero: <input id="genero1" type="radio" name="genero" value="masc"> Masc
+	<input id="genero2" type="radio" name="genero" value="fem"> Fem
+	<br/><br/>
+	Curso: <select name="curso">
+	<option value="">Selecione...</option>
+	<option value="ads">ADS</option>
+	<option value="desig">Design</option>
+	</select> <br/><br/>
+	Interesses: <input type="checkbox" name="int1" value="ti"> T.I
+	<input type="checkbox" name="int2" value="ads"> ADS
+	<input type="checkbox" name="int3" value="nen"> Nenhum <br><br><br>
+
+	<input type="hidden" id="demo" value="">
+
+	<input type="submit"  onclick="return validar()">
+
+</form><br><br><br><br><br>
+
+<a href="https://gumechler.github.io/Calc_JurosCompostos/"><button id="button">Calculadora de Júros Compostos</button></a>                                                   
+
+</body>
+</html>
